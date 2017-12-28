@@ -14,9 +14,11 @@ int main()
 {
 	PrintIntro();
 
-	PlayGame();
-
-	AskToPlayAgain();
+	do
+	{
+		PlayGame();
+	}
+	while(AskToPlayAgain());
 
 	// Exits the application
 	return 0;
@@ -37,7 +39,7 @@ void PlayGame()
 {
 	// Loop for the number of turns asking for guesses
 	constexpr int NUMBER_OF_TURNS = 5;
-	for (int count = 0; count < NUMBER_OF_TURNS; count++)
+	for(int count = 0; count < NUMBER_OF_TURNS; count++)
 	{
 		string Guess = GetGuess();
 		cout << endl;
@@ -55,7 +57,7 @@ string GetGuess()
 
 bool AskToPlayAgain()
 {
-	cout << "Do you want to play again?";
+	cout << "Do you want to play again (y/n)?";
 	string Response = "";
 	getline(cin, Response);
 	cout << endl;
