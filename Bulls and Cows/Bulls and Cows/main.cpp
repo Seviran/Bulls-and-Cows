@@ -5,6 +5,7 @@
 using namespace std;
 
 void PrintIntro();
+void PlayGame();
 string GetGuessAndPrintBack();
 
 // The entry point for our application
@@ -12,14 +13,9 @@ int main()
 {
     PrintIntro();
 
-    // Loop for the number of turns asking for guesses
-    constexpr int NUMBER_OF_TURNS = 5;
-    for (int count = 0; count < NUMBER_OF_TURNS; count++)
-    {
-        GetGuessAndPrintBack();
-        std::cout << std::endl;
-    }
+    PlayGame();
 
+    // Exits the game
     return 0;
 }
 
@@ -32,6 +28,17 @@ void PrintIntro()
     std::cout << " letter isogram I'm thinking off?\n";
     std::cout << std::endl;
     return;
+}
+
+void PlayGame()
+{
+    // Loop for the number of turns asking for guesses
+    constexpr int NUMBER_OF_TURNS = 5;
+    for (int count = 0; count < NUMBER_OF_TURNS; count++)
+    {
+        GetGuessAndPrintBack();
+        std::cout << std::endl;
+    }
 }
 
 // Get a guess from the player
