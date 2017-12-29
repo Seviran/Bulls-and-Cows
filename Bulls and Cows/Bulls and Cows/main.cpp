@@ -4,9 +4,11 @@
 
 #include "FBullCowGame.h"
 
+using FText = std::string;
+
 void PrintIntro();
 void PlayGame();
-std::string GetGuess();
+FText GetGuess();
 bool AskToPlayAgain();
 
 FBullCowGame BCGame; // Instantiate a new game
@@ -46,7 +48,7 @@ void PlayGame()
 	// TODO Change from FOR to WHILE loop once we are validating tries
 	for(int count = 0; count < MaxTries; count++)
 	{
-		std::string Guess = GetGuess();
+		FText Guess = GetGuess();
 		// TODO Make loop checking valid guess
 
 		// Submit valid guess to the game
@@ -59,9 +61,9 @@ void PlayGame()
 }
 
 // Get a guess from the player
-std::string GetGuess()
+FText GetGuess()
 {
-	std::string Guess = "";
+	FText Guess = "";
 	int CurrentTry = BCGame.GetCurrentTry();
 
 	std::cout << "Try " << CurrentTry << ". Enter your guess: ";
@@ -72,7 +74,7 @@ std::string GetGuess()
 bool AskToPlayAgain()
 {
 	std::cout << "Do you want to play again (y/n)?";
-	std::string Response = "";
+	FText Response = "";
 	std::getline(std::cin, Response);
 	std::cout << std::endl;
 	char firstChar = Response[0];
