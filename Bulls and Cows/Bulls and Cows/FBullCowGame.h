@@ -6,23 +6,53 @@
 using FString = std::string;
 using int32 = int;
 
+// All values initialised to 0
+struct FBullCowCount
+{
+	int32 Bulls = 0;
+	int32 Cows = 0;
+};
+
+enum class EGuessStatus
+{
+	Invalid_Status,
+	OK,
+	Not_Isogram,
+	Wrong_Length,
+	Not_Lowercase
+};
+
 class FBullCowGame
 {
+	#pragma region public
+
 	public:
-	// Constructors
+
+	#pragma region Constructor
 	FBullCowGame();
-	// Getters
+	#pragma endregion
+
+	#pragma region Getters
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
+	int32 GetHiddenWordLength() const;
 	bool IsGameWon() const;
-	// Function
+	#pragma endregion
+
+	#pragma region Functions
+	EGuessStatus CheckGuessValidity(FString) const; // TODO Make a more rich return type
 	void Reset();
-	bool CheckGuessValidity(FString);
-	// TODO Provide a method for counting bulls & cows, and incrementing turn number
+	FBullCowCount SubmitGuess(FString);
+	#pragma endregion
 
+	#pragma endregion
 
+	#pragma region private
 	private:
-	// See constructor for initialisation
 	int32 MyCurrentTry;
 	int32 MymaxTries;
+	FString MyHiddenWord;
+	#pragma endregion
+
+	
 };
